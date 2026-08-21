@@ -1,0 +1,21 @@
+// display:contents so wrapping a form's fields in a <fieldset> (to cascade disabled to
+// every nested input/button in one shot, for the permission-gated Edit toggle) doesn't
+// disturb .editor's own grid layout.
+.fieldset {
+  display: contents;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

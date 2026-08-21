@@ -1,0 +1,131 @@
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  padding: 18px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.iconWrap {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.primary {
+  background: var(--color-primary-50);
+  color: var(--color-primary-600);
+}
+.good {
+  background: var(--status-good-bg);
+  color: var(--status-good);
+}
+.warning {
+  background: var(--status-warning-bg);
+  color: var(--status-warning);
+}
+.critical {
+  background: var(--status-critical-bg);
+  color: var(--status-critical);
+}
+.violet {
+  background: #eee9ff;
+  color: #5b35d5;
+}
+.mint {
+  background: #e7f8ef;
+  color: #15a66f;
+}
+.amber {
+  background: #fff3cf;
+  color: #c47a00;
+}
+.sky {
+  background: #e5f4ff;
+  color: #1787cf;
+}
+.rose {
+  background: #ffe5f1;
+  color: #d73582;
+}
+
+.label {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.valueRow {
+  margin-top: 6px;
+}
+
+.value {
+  font-size: 24px;
+  font-weight: 700;
+  font-variant-numeric: proportional-nums;
+}
+
+.delta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.deltaUp {
+  color: var(--status-good);
+}
+
+.deltaDown {
+  color: var(--status-critical);
+}
+
+.sparkline {
+  height: 52px;
+  margin-top: 6px;
+  --spark-primary: var(--color-primary-600);
+  --spark-violet: #5b35d5;
+  --spark-mint: #15a66f;
+  --spark-amber: #eba900;
+  --spark-sky: #1787cf;
+  --spark-rose: #db2e85;
+}
+
+:root[data-theme='dark'] {
+  .violet {
+    background: #2b214c;
+    color: #a79cf0;
+  }
+  .mint {
+    background: #122b20;
+    color: #3ecf91;
+  }
+  .amber {
+    background: #35260e;
+    color: #fab219;
+  }
+  .sky {
+    background: #10283a;
+    color: #58b7ee;
+  }
+  .rose {
+    background: #3b152a;
+    color: #f070ad;
+  }
+}

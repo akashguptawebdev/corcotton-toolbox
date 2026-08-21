@@ -1,0 +1,15 @@
+.hint {
+  margin: -4px 0 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+// display:contents so wrapping the editor's sections in a <fieldset> (to cascade
+// disabled to every nested input/button in one shot) doesn't disturb .editor's own grid
+// layout — the fieldset itself is invisible to layout, only its children participate.
+.fieldset {
+  display: contents;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}

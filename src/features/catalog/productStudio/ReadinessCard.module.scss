@@ -1,0 +1,102 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md, 10px);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+
+  header h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 15px;
+  }
+}
+
+.gauge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  align-self: center;
+}
+
+.track {
+  fill: none;
+  stroke: var(--border-hairline);
+  stroke-width: 8;
+}
+
+.progress {
+  fill: none;
+  stroke: var(--color-primary-500);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.gaugeLabel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+
+  strong {
+    color: var(--text-primary);
+    font-size: 18px;
+  }
+
+  span {
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.done {
+  color: var(--text-primary);
+
+  .mark {
+    background: var(--status-good-bg);
+    color: var(--status-good);
+  }
+}
+
+.todo {
+  color: var(--text-muted);
+
+  .mark {
+    border: 1.5px solid var(--border-strong);
+  }
+}

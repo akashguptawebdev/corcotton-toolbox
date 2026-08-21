@@ -1,0 +1,129 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 200;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  border-radius: var(--radius-md, 10px);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-lg);
+  padding: 16px;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    strong {
+      color: var(--text-primary);
+      font-size: 15px;
+    }
+
+    button {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--bg-hover);
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}
+
+.loading {
+  padding: 40px 0;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.viewport {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--bg-hover);
+  cursor: grab;
+  touch-action: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    user-select: none;
+  }
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 0 0 999px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.zoomRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+
+  input {
+    flex: 1;
+  }
+}
+
+.cancel,
+.confirm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  font-size: 13px;
+  min-height: 34px;
+  padding: 6px 14px;
+}
+
+.cancel {
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.confirm {
+  border: 1px solid var(--color-primary-500);
+  background: var(--color-primary-500);
+  color: var(--color-on-primary);
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

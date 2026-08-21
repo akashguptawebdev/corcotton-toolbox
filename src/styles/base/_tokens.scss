@@ -1,0 +1,102 @@
+// Design tokens as CSS custom properties — enables runtime light/dark switching.
+// Ink/surface/status values are shared with the dataviz chart palette so charts
+// and UI chrome read as one system.
+
+:root {
+  // Brand accent (violet) — separate from the dataviz categorical palette.
+  --color-primary-50: #f2f0ff;
+  --color-primary-100: #e4e0ff;
+  --color-primary-200: #c7bdff;
+  --color-primary-500: #6c5ce7;
+  --color-primary-600: #5b4bd6;
+  --color-primary-700: #4a3aa7;
+  --color-on-primary: #ffffff;
+
+  // Surfaces
+  --bg-page: #f7f8fb;
+  --bg-surface: #ffffff;
+  --bg-surface-2: #fcfcfb;
+  --bg-hover: #f2f1ee;
+  --bg-active: var(--color-primary-50);
+
+  // Ink
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --text-on-primary: #ffffff;
+
+  // Borders
+  --border-hairline: #e1e0d9;
+  --border-strong: #c3c2b7;
+
+  // Status (fixed — never themed; matches dataviz status palette)
+  --status-good: #0ca30c;
+  --status-good-bg: #e8f7e8;
+  --status-warning: #b8790f;
+  --status-warning-bg: #fdf3e0;
+  --status-serious: #c1552f;
+  --status-serious-bg: #fceee7;
+  --status-critical: #d03b3b;
+  --status-critical-bg: #fbe9e9;
+
+  // Elevation
+  --shadow-sm: 0 1px 2px rgba(11, 11, 11, 0.06);
+  --shadow-md: 0 4px 16px rgba(11, 11, 11, 0.08);
+  --shadow-lg: 0 12px 32px rgba(11, 11, 11, 0.12);
+
+  // Radii
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 8px;
+  --radius-full: 999px;
+
+  // Layout
+  --sidebar-width: 240px;
+  --sidebar-width-collapsed: 76px;
+  --topbar-height: 64px;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+:root[data-theme='dark'] {
+  --color-primary-50: #241f3d;
+  --color-primary-100: #2f2850;
+  --color-primary-200: #473b7a;
+  --color-primary-500: #9085e9;
+  --color-primary-600: #a79cf0;
+  --color-primary-700: #c2b9f5;
+  --color-on-primary: #17141f;
+
+  --bg-page: #0d0d0d;
+  --bg-surface: #1a1a19;
+  --bg-surface-2: #201f1e;
+  --bg-hover: #26251f;
+  --bg-active: var(--color-primary-100);
+
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted: #898781;
+  --text-on-primary: #0b0b0b;
+
+  --border-hairline: #2c2c2a;
+  --border-strong: #383835;
+
+  --status-good: #0ca30c;
+  --status-good-bg: #12280f;
+  --status-warning: #fab219;
+  --status-warning-bg: #2e2410;
+  --status-serious: #ec835a;
+  --status-serious-bg: #2c1a10;
+  --status-critical: #e66767;
+  --status-critical-bg: #2c1414;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+  }
+}

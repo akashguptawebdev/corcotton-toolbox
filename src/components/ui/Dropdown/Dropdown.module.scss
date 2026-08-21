@@ -1,0 +1,23 @@
+.wrapper {
+  position: relative;
+}
+
+.panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  min-width: 220px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 6px;
+  z-index: 30;
+}
+
+.alignRight {
+  right: 0;
+}
+
+.alignLeft {
+  left: 0;
+}

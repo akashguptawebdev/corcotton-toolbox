@@ -1,0 +1,122 @@
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  padding: 20px;
+  min-width: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+
+  h3 {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  a {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-primary-600);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--bg-hover);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rowMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.rowTitle {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowSubtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.rowAmount {
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.metricList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.metricRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  border-bottom: 1px solid var(--border-hairline);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.metricLabel {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.metricValue {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.metricDelta {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 58px;
+  justify-content: flex-end;
+}
+
+.deltaUp {
+  color: var(--status-good);
+}
+.deltaDown {
+  color: var(--status-critical);
+}
