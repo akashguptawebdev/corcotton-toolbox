@@ -2,8 +2,11 @@ import apiClient from '@services/apiClient';
 
 const unwrap = (promise) => promise.then((res) => res.data.data);
 
+// The header menu and its mega-menu panels are edited on one screen, so both resources live
+// in one api module. `menus` is the nav tree (labels, order, link targets); `megaMenuConfigs`
+// is the dropdown panel behind an individual item.
 export const menusApi = {
-  list: () => unwrap(apiClient.get('/admin/menus')),
+  list: (params = {}) => unwrap(apiClient.get('/admin/menus', { params })),
   get: (id) => unwrap(apiClient.get(`/admin/menus/${id}`)),
   create: (payload) => unwrap(apiClient.post('/admin/menus', payload)),
   update: (id, payload) => unwrap(apiClient.put(`/admin/menus/${id}`, payload)),

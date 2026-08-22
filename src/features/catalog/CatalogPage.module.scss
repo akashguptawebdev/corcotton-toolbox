@@ -566,6 +566,14 @@
   }
 }
 
+// Holds Edit + Close side by side — a bare div defaults to block, which would stack them.
+.editorHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
 .editorSection {
   border: 1px solid var(--border-hairline);
   border-radius: 8px;

@@ -461,9 +461,16 @@ function CatalogPage({ module }) {
           <span>{editing ? (isEditing ? 'Editing' : 'Viewing') : 'Creating'}</span>
           <h2>{editing ? editing.name : `New ${config.singular}`}</h2>
         </div>
-        <button type="button" onClick={closeForm}>
-          <X size={16} /> Close
-        </button>
+        <div className={styles.editorHeaderActions}>
+          {editing && !isEditing ? (
+            <Button type="button" onClick={startEdit} disabled={!canEdit} title={!canEdit ? `You don't have permission to edit ${config.title.toLowerCase()}` : undefined}>
+              <Edit3 size={16} /> Edit
+            </Button>
+          ) : null}
+          <button type="button" onClick={closeForm}>
+            <X size={16} /> Close
+          </button>
+        </div>
       </div>
 
       {editing && !canEdit ? <div className={styles.notice}>You have read-only access to {config.title.toLowerCase()}.</div> : null}
@@ -609,18 +616,17 @@ function CatalogPage({ module }) {
       ) : null}
       </fieldset>
 
-      {editing && !isEditing ? (
-        <Button type="button" onClick={startEdit} disabled={!canEdit} title={!canEdit ? `You don't have permission to edit ${config.title.toLowerCase()}` : undefined}>
-          <Edit3 size={16} /> Edit
-        </Button>
-      ) : (
+      {/* Edit lives in the header now (next to Close) so it's visible without scrolling past
+          every section first — see editorHeaderActions above. Only Cancel/Save belong down
+          here, and only once there's actually something to submit. */}
+      {!(editing && !isEditing) ? (
         <div className={styles.formActions}>
           {editing ? <Button type="button" variant="secondary" onClick={cancelEdit} disabled={saving}>Cancel</Button> : null}
           <button className={styles.primaryButton} type="submit" disabled={saving}>
             <Save size={16} /> {saving ? 'Saving' : editing ? 'Save Changes' : `Create ${config.singular}`}
           </button>
         </div>
-      )}
+      ) : null}
     </form>
     );
   };

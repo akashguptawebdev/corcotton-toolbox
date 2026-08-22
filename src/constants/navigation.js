@@ -33,7 +33,6 @@ import {
   Bell,
   BarChart3,
   Menu,
-  Rows,
 } from 'lucide-react';
 import { PERMISSIONS } from './permissions';
 
@@ -83,11 +82,17 @@ export const NAV_SECTIONS = [
     ],
   },
   {
+    label: 'Storefront',
+    items: [
+      { label: 'Homepage', path: '/homepage', icon: Image, permission: PERMISSIONS.BANNER_VIEW },
+      { label: 'Banners', path: '/banners', icon: Image, permission: PERMISSIONS.BANNER_VIEW },
+    ],
+  },
+  {
     label: 'Marketing',
     restricted: true,
     items: [
       { label: 'Coupons', path: '/coupons', icon: Tag, permission: PERMISSIONS.COUPON_VIEW },
-      { label: 'Banner Management', path: '/banners', icon: Image, permission: PERMISSIONS.BANNER_VIEW },
       { label: 'Email Campaigns', path: '/email-campaigns', icon: Mail, permission: PERMISSIONS.NEWSLETTER_VIEW },
       { label: 'Flash Sales', path: '/flash-sales', icon: Zap, permission: PERMISSIONS.FLASHSALE_VIEW },
       { label: 'SEO & Analytics', path: '/seo-analytics', icon: Search, permission: PERMISSIONS.ANALYTICS_VIEW },
@@ -99,14 +104,16 @@ export const NAV_SECTIONS = [
     items: [
       { label: 'Pages', path: '/pages', icon: FileText, permission: PERMISSIONS.CMS_VIEW },
       { label: 'Blog Posts', path: '/blogs', icon: Newspaper, permission: PERMISSIONS.BLOG_VIEW },
-      { label: 'Menus', path: '/menus', icon: LayoutTemplate, permission: PERMISSIONS.CMS_VIEW },
+      { label: 'Menus', path: '/menus', icon: LayoutTemplate, permission: PERMISSIONS.NAVIGATION_VIEW },
     ],
   },
   {
     label: 'Navigation',
     items: [
+      // One screen owns both the header items and the mega menu behind each of them —
+      // they are the same unit of work, and splitting them meant a new item had to be
+      // saved on one page before the other page could configure it.
       { label: 'Navigation', path: '/navigation', icon: Menu, permission: PERMISSIONS.NAVIGATION_VIEW },
-      { label: 'Mega Menu Config', path: '/mega-menu-config', icon: Rows, permission: PERMISSIONS.MEGA_MENU_CONFIG_VIEW },
     ],
   },
   {

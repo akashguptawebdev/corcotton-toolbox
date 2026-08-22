@@ -6,7 +6,7 @@ import LinkUrlInput from '@components/forms/LinkUrlInput/LinkUrlInput';
 import { useEditGuard } from '@hooks/useEditGuard';
 import { PERMISSIONS } from '@constants/permissions';
 import { catalogApi } from '@features/catalog/catalog.api';
-import { menusApi } from './menus.api';
+import { menusApi } from '@features/navigation/navigation.api';
 import catalogStyles from '@features/catalog/CatalogPage.module.scss';
 import styles from './MenusPage.module.scss';
 
@@ -137,7 +137,7 @@ const MenuItemRow = ({ item, depth, siblings, index, categories, collections, fi
 const emptyMenuForm = { name: '', status: 'ACTIVE', items: [] };
 
 function MenusPage() {
-  const { canEdit, isEditing, startEdit, stopEdit } = useEditGuard(PERMISSIONS.CMS_VIEW);
+  const { canEdit, isEditing, startEdit, stopEdit } = useEditGuard(PERMISSIONS.NAVIGATION_MANAGE);
   const [menus, setMenus] = useState([]);
   const [categories, setCategories] = useState([]);
   const [collections, setCollections] = useState([]);
