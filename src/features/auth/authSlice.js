@@ -58,6 +58,30 @@ export const login = createAsyncThunk('auth/login', async (credentials, { reject
   }
 });
 
+export const sendLoginOtp = createAsyncThunk('auth/sendLoginOtp', async (payload, { rejectWithValue }) => {
+  try {
+    return await authApi.sendLoginOtp(payload);
+  } catch (err) {
+    return rejectWithValue(err.response?.data?.message || 'Unable to send OTP');
+  }
+});
+
+export const verifyLoginOtp = createAsyncThunk('auth/verifyLoginOtp', async (payload, { rejectWithValue }) => {
+  try {
+    return await authApi.verifyLoginOtp(payload);
+  } catch (err) {
+    return rejectWithValue(err.response?.data?.message || 'Invalid OTP');
+  }
+});
+
+export const googleLogin = createAsyncThunk('auth/googleLogin', async (credential, { rejectWithValue }) => {
+  try {
+    return await authApi.googleLogin(credential);
+  } catch (err) {
+    return rejectWithValue(err.response?.data?.message || 'Google sign-in failed');
+  }
+});
+
 export const verifyTwoFactor = createAsyncThunk('auth/verifyTwoFactor', async (code, { getState, rejectWithValue }) => {
   const { pendingTwoFactor } = getState().auth;
   try {
@@ -118,6 +142,30 @@ const authSlice = createSlice({
         }
       })
       .addCase(login.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(sendLoginOtp.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(sendLoginOtp.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(verifyLoginOtp.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(verifyLoginOtp.fulfilled, (state, action) => {
+        applyCredentials(state, action.payload);
+      })
+      .addCase(verifyLoginOtp.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(googleLogin.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(googleLogin.fulfilled, (state, action) => {
+        applyCredentials(state, action.payload);
+      })
+      .addCase(googleLogin.rejected, (state, action) => {
         state.error = action.payload;
       })
       .addCase(verifyTwoFactor.fulfilled, (state, action) => {

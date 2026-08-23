@@ -29,6 +29,12 @@ const emptyForm = {
   state: '',
   pincode: '',
   country: 'India',
+  shippingOriginAddressLine1: '',
+  shippingOriginCity: '',
+  shippingOriginState: '',
+  shippingOriginPincode: '',
+  shippingOriginCountry: 'India',
+  shippingOriginWarehouseName: '',
   currency: 'INR',
   timezone: 'Asia/Kolkata',
 };
@@ -72,6 +78,12 @@ function StoreSettingsPage() {
         state: settings.state || '',
         pincode: settings.pincode || '',
         country: settings.country || 'India',
+        shippingOriginAddressLine1: settings.shippingOriginAddressLine1 || '',
+        shippingOriginCity: settings.shippingOriginCity || '',
+        shippingOriginState: settings.shippingOriginState || '',
+        shippingOriginPincode: settings.shippingOriginPincode || '',
+        shippingOriginCountry: settings.shippingOriginCountry || 'India',
+        shippingOriginWarehouseName: settings.shippingOriginWarehouseName || '',
         currency: settings.currency || 'INR',
         timezone: settings.timezone || 'Asia/Kolkata',
       };
@@ -101,6 +113,17 @@ function StoreSettingsPage() {
   const updateDisplayName = (value) => {
     displayNameTouched.current = true;
     updateField('displayName', value);
+  };
+
+  const copyRegisteredAddressToShippingOrigin = () => {
+    setForm((current) => ({
+      ...current,
+      shippingOriginAddressLine1: current.addressLine1,
+      shippingOriginCity: current.city,
+      shippingOriginState: current.state,
+      shippingOriginPincode: current.pincode,
+      shippingOriginCountry: current.country || 'India',
+    }));
   };
 
   const cancel = () => {
@@ -201,6 +224,41 @@ function StoreSettingsPage() {
               <label>Pincode<input value={form.pincode} onChange={(event) => updateField('pincode', event.target.value)} /></label>
               <label>Country<input value={form.country} onChange={(event) => updateField('country', event.target.value)} /></label>
             </div>
+          </section>
+
+          <section className={styleFor('editorSection')}>
+            <div className={styles.sectionTitleRow}>
+              <div>
+                <h3>Shipping Origin</h3>
+                <p className={styles.hint}>Warehouse / pickup location used to calculate shipping rates at checkout. PIN code is required for Delhivery rate lookup.</p>
+              </div>
+              {isEditing ? (
+                <button type="button" className={styles.linkButton} onClick={copyRegisteredAddressToShippingOrigin}>
+                  Copy registered address
+                </button>
+              ) : null}
+            </div>
+            <label>Address Line<input value={form.shippingOriginAddressLine1} onChange={(event) => updateField('shippingOriginAddressLine1', event.target.value)} placeholder="Warehouse / pickup address" /></label>
+            <div className={styleFor('twoCol')}>
+              <label>City<input value={form.shippingOriginCity} onChange={(event) => updateField('shippingOriginCity', event.target.value)} /></label>
+              <label>State<input value={form.shippingOriginState} onChange={(event) => updateField('shippingOriginState', event.target.value)} placeholder="e.g. Uttar Pradesh" /></label>
+            </div>
+            <div className={styleFor('twoCol')}>
+              <label>Origin PIN Code<input value={form.shippingOriginPincode} onChange={(event) => updateField('shippingOriginPincode', event.target.value.replace(/\D/g, '').slice(0, 6))} placeholder="201001" inputMode="numeric" maxLength={6} /></label>
+              <label>Country<input value={form.shippingOriginCountry} onChange={(event) => updateField('shippingOriginCountry', event.target.value)} /></label>
+            </div>
+            <label>
+              Delhivery Warehouse Name
+              <input
+                value={form.shippingOriginWarehouseName}
+                onChange={(event) => updateField('shippingOriginWarehouseName', event.target.value)}
+                placeholder="Exact name from Delhivery One -> Settings -> Warehouses"
+              />
+            </label>
+            <p className={styles.hint}>
+              Required to create shipments (separate from the address above) — Delhivery looks pickup_location up by
+              this exact name against your registered Client Warehouses, not by address or PIN code.
+            </p>
           </section>
 
           <section className={styleFor('editorSection')}>

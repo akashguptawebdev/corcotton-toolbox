@@ -1,0 +1,91 @@
+.tableCard {
+  overflow: hidden;
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.scrollArea {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  th,
+  td {
+    border-bottom: 1px solid var(--border-hairline);
+    padding: 12px 14px;
+    vertical-align: middle;
+  }
+
+  th {
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 750;
+    text-align: left;
+  }
+
+  td {
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+
+  tbody tr {
+    transition: background-color 0.15s ease;
+  }
+
+  tbody tr:hover {
+    background: var(--bg-surface-2);
+  }
+
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
+.selectCell {
+  width: 38px;
+  padding-inline: 14px 4px !important;
+
+  input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--color-primary-500);
+  }
+}
+
+.alignRight {
+  text-align: right !important;
+}
+
+.emptyCell {
+  height: 150px;
+  color: var(--text-muted) !important;
+  font-weight: 650;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 58px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--border-hairline);
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+@media (max-width: 740px) {
+  .footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

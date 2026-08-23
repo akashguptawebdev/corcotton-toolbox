@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  flex-wrap: wrap;
+
+  button,
+  select {
+    min-width: 34px;
+    height: 34px;
+    border: 1px solid var(--border-hairline);
+    border-radius: 6px;
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 650;
+  }
+
+  select {
+    min-width: 88px;
+    padding: 0 8px;
+  }
+}
+
+.activePage {
+  border-color: var(--color-primary-500) !important;
+  color: var(--color-primary-500) !important;
+  background: var(--color-primary-50) !important;
+}

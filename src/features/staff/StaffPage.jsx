@@ -15,7 +15,7 @@ import styles from './StaffPage.module.scss';
 
 const styleFor = (key) => catalogStyles[key] || styles[key];
 
-const emptyForm = { name: '', email: '', password: '', role: ROLES.MANAGER, profilePic: '', status: 'active' };
+const emptyForm = { name: '', email: '', phone: '', password: '', role: ROLES.MANAGER, profilePic: '', status: 'active' };
 
 const ASSIGNABLE_ROLES = [ROLES.MANAGER, ROLES.ADMIN, ROLES.SUPER_ADMIN];
 
@@ -103,6 +103,7 @@ function StaffPage() {
     setForm({
       name: user.name || '',
       email: user.email || '',
+      phone: user.phone || '',
       password: '',
       role: user.role || ROLES.MANAGER,
       profilePic: user.profilePic || '',
@@ -126,6 +127,7 @@ function StaffPage() {
       const payload = {
         name: form.name.trim(),
         email: form.email.trim(),
+        phone: form.phone.trim(),
         role: form.role,
         profilePic: form.profilePic || null,
         ...(editing ? { status: form.status } : {}),
@@ -222,6 +224,18 @@ function StaffPage() {
             <label>Full Name<input value={form.name} onChange={(event) => updateField('name', event.target.value)} placeholder="Jane Doe" required /></label>
             <label>Email<input type="email" value={form.email} onChange={(event) => updateField('email', event.target.value)} placeholder="jane@yourstore.com" required /></label>
           </div>
+          <div className={styleFor('twoCol')}>
+            <label>
+              WhatsApp Number (optional)
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={(event) => updateField('phone', event.target.value)}
+                placeholder="98765 43210"
+              />
+            </label>
+          </div>
+          <p className={styleFor('notice')}>Adding a WhatsApp number lets this admin sign in with OTP over WhatsApp, in addition to email.</p>
           <ImageUploadField label="Profile Photo" value={form.profilePic} onChange={(url) => updateField('profilePic', url)} folder="staff" />
           {editing ? (
             <label>

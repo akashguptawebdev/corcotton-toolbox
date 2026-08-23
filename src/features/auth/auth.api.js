@@ -5,6 +5,18 @@ import apiClient from '@services/apiClient';
 // two-factor is enabled on the account.
 export const login = (credentials) => apiClient.post('/admin/auth/login', credentials).then((r) => r.data.data);
 
+// `channel` mirrors the storefront's own convention (corcotton-store's authService.js):
+// the client decides EMAIL vs WHATSAPP from the identifier's shape and sends it
+// explicitly — the server never guesses. `countryCode` only matters for WHATSAPP.
+export const sendLoginOtp = ({ identifier, channel = 'EMAIL', countryCode }) =>
+  apiClient.post('/admin/auth/otp/send', { identifier, channel, countryCode }).then((r) => r.data.data);
+
+export const verifyLoginOtp = ({ identifier, otp, channel = 'EMAIL', countryCode }) =>
+  apiClient.post('/admin/auth/otp/verify', { identifier, otp, channel, countryCode }).then((r) => r.data.data);
+
+export const googleLogin = (credential) =>
+  apiClient.post('/admin/auth/google-login', { credential }).then((r) => r.data.data);
+
 export const verifyTwoFactor = ({ preAuthToken, code }) =>
   apiClient.post('/admin/auth/2fa/verify', { preAuthToken, code }).then((r) => r.data.data);
 

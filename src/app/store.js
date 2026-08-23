@@ -1,5 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer, { sessionExpired } from '@features/auth/authSlice';
+import ordersReducer from '@features/orders/ordersSlice';
+import returnsReducer from '@features/returns/returnsSlice';
 import uiReducer from './uiSlice';
 import brandingReducer from './brandingSlice';
 import { attachAuthHandlers } from '@services/apiClient';
@@ -9,6 +11,8 @@ export const store = configureStore({
     auth: authReducer,
     ui: uiReducer,
     branding: brandingReducer,
+    orders: ordersReducer,
+    returns: returnsReducer,
   },
 });
 

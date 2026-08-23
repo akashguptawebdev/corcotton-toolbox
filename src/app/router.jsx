@@ -4,6 +4,8 @@ import AuthLayout from '@layouts/AuthLayout/AuthLayout';
 import LoginPage from '@features/auth/LoginPage';
 import ChangePasswordPage from '@features/auth/ChangePasswordPage';
 import DashboardPage from '@features/dashboard/DashboardPage';
+import OrdersPage from '@features/orders/OrdersPage';
+import ReturnsPage from '@features/returns/ReturnsPage';
 import CatalogPage from '@features/catalog/CatalogPage';
 import ProductStudio from '@features/catalog/ProductStudio';
 import MediaLibraryPage from '@features/media/MediaLibraryPage';
@@ -13,6 +15,7 @@ import MenusPage from '@features/settings/MenusPage';
 import NavigationManagerPage from '@features/navigation/NavigationManagerPage';
 import HomepageBuilderPage from '@features/homepage/HomepageBuilderPage';
 import BannerManagementPage from '@features/banners/BannerManagementPage';
+import InventoryPage from '@features/inventory/InventoryPage';
 import StaffPage from '@features/staff/StaffPage';
 import RolesPermissionsPage from '@features/staff/RolesPermissionsPage';
 import ComingSoonPage from '@pages/ComingSoonPage';
@@ -27,6 +30,8 @@ import { NAV_ITEMS_FLAT } from '@constants/navigation';
 // was added to one but not the other rendered blank.
 const PAGE_BY_PATH = {
   '/dashboard': <DashboardPage />,
+  '/orders': <OrdersPage />,
+  '/returns': <ReturnsPage />,
   '/products': <ProductStudio />,
   '/categories': <CatalogPage module="categories" />,
   '/collections': <CatalogPage module="collections" />,
@@ -39,6 +44,7 @@ const PAGE_BY_PATH = {
   '/menus': <MenusPage />,
   '/homepage': <HomepageBuilderPage />,
   '/banners': <BannerManagementPage />,
+  '/inventory': <InventoryPage />,
   // Nav items and their mega menus are edited together on one screen.
   '/navigation': <NavigationManagerPage />,
   '/staff': <StaffPage />,

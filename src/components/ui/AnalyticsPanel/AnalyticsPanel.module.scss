@@ -1,0 +1,138 @@
+.panel {
+  align-self: start;
+  overflow: hidden;
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+
+  h2 {
+    margin: 0;
+    padding: 16px 16px 8px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 750;
+  }
+}
+
+.donutRow {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 0 16px 12px;
+}
+
+.donut {
+  position: relative;
+  width: 96px;
+  height: 96px;
+}
+
+.donutCenter {
+  position: absolute;
+  inset: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 50%;
+  background: var(--bg-surface);
+
+  strong {
+    color: var(--text-primary);
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  span {
+    margin-top: 3px;
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 650;
+  }
+}
+
+.legend,
+.metricList {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legend li,
+.metricList li {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  gap: 7px;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.25;
+
+  strong {
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+
+.swatch,
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.section {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border-hairline);
+
+  h3 {
+    margin: 0 0 10px;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 750;
+  }
+}
+
+.good {
+  background: var(--status-good);
+}
+
+.warning {
+  background: var(--status-warning);
+}
+
+.serious {
+  background: var(--status-serious);
+}
+
+.critical {
+  background: var(--status-critical);
+}
+
+.neutral {
+  background: var(--text-muted);
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 16px 16px;
+  border: 0;
+  background: transparent;
+  color: var(--color-primary-500);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+@media (max-width: 1180px) {
+  .panel {
+    align-self: stretch;
+  }
+}
